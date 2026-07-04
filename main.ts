@@ -60,10 +60,6 @@ function manual_mode (command: string) {
         CutebotPro.stopImmediately(CutebotProMotors.ALL)
         billy.say("Hello")
         billy.say("My name is Ryder")
-        CutebotPro.extendServoControl(ServoType.Servo180, CutebotProServoIndex.S1, 0)
-        CutebotPro.extendServoControl(ServoType.Servo180, CutebotProServoIndex.S1, 0)
-        servos.P0.setAngle(90)
-        servos.P0.setAngle(0)
     }
 }
 let autopilot_enabled = false
