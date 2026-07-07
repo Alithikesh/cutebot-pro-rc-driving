@@ -1,6 +1,9 @@
+/**
+ * Leave your night_light() function unchanged.
+ */
 function autopilot_mode () {
     sonar = CutebotPro.ultrasonic(SonarUnit.Inches)
-    if (sonar > 2 && sonar < 20) {
+    if (2 < sonar && sonar < 20) {
         strip.showColor(neopixel.colors(NeoPixelColors.Red))
         CutebotPro.colorLight(CutebotProRGBLight.RGBA, 0xff0000)
         // Turn left to avoid obstacle
@@ -12,7 +15,7 @@ function autopilot_mode () {
         CutebotPro.pwmCruiseControl(30, 30)
     }
 }
-// This is the recieve string part where it gets the instruction from the Joystick:bit.
+// Receive commands from the Joystick:bit.
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "autopilot_on") {
         billy.say("autopilot mode on")
@@ -29,7 +32,7 @@ radio.onReceivedString(function (receivedString) {
         manual_mode(receivedString)
     }
 })
-// Write this code for manual mode version which means you can control it.
+// Manual driving mode.
 function manual_mode (command: string) {
     if (command == "forward") {
         strip.showColor(neopixel.colors(NeoPixelColors.Yellow))
@@ -71,7 +74,6 @@ billy.say("My name is Ryder")
 radio.setGroup(3)
 strip = neopixel.create(DigitalPin.P15, 24, NeoPixelMode.RGB)
 strip.setMatrixWidth(10000)
-// Check if on autopilot, and activate autopilot mode.0
 basic.forever(function () {
     if (autopilot_enabled) {
         autopilot_mode()
